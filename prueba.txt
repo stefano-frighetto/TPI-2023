@@ -1,1 +1,1 @@
-Hola! Probando el repositorio
+Hola! Probando el .gitignore
