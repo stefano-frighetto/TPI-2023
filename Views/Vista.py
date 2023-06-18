@@ -29,7 +29,7 @@ class Vista:
         evento = Evento(cliente, fecha_solicitada)
         
         print("Servicios disponibles:")
-        # Mostrar servicios disponibles y sus costos
+        # Mostrar servicios disponibles y sus costos PUEDE SER CON UN ARCHIVO TAMBIEN?
         servicios_disponibles = [
             Servicio(1, "DJ", 500),
             Servicio(2, "Decoración", 800),
