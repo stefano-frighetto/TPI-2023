@@ -57,6 +57,7 @@ class VistaAgenda:
         nombre = input()
         print('Ingrese el DNI del cliente')
         dni = input()
+        return nombre, dni
     
     #La puedo usar para elegir evento también. ver si se puede hacer genérica
     def solicitar_servicio(self, lista_de_servicios):
