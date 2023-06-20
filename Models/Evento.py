@@ -56,6 +56,9 @@ class Evento:
     def set_importe_recibido_senia(self, nuevo_importe):
         self.importe_recibido_senia = nuevo_importe
     
+    def __str__(self):
+        return f'{self.fecha_evento} - {self.cliente_evento}'
+
     def calcular_importes(self):
         self.importe_servicios = sum(servicio.costo_servicio for servicio in self.servicios_contratados)
         self.importe_total = (self.importe_administrativo + self.importe_servicios) * self.importe_iva

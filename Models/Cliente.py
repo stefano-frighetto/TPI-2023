@@ -14,3 +14,6 @@ class Cliente:
     
     def set_nombre_cliente(self, nuevo_nombre):
         self.nombre_cliente = nuevo_nombre
+    
+    def __str__(self):
+        return self.nombre_cliente

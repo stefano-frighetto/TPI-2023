@@ -48,7 +48,7 @@ class VistaAgenda:
         if rta == 1:
             return True
         elif rta == 2:
-            return date + datetime.timedelta(days=1)
+            self.mostrar_fecha_propuesta(date + datetime.timedelta(days=1))
         else:
             return False
 
@@ -61,11 +61,19 @@ class VistaAgenda:
     
     #La puedo usar para elegir evento también. ver si se puede hacer genérica
     def solicitar_servicio(self, lista_de_servicios):
-        print('Seleccione un servicio de la lista:')
-        for i, servicio in lista_de_servicios:
-            print(f'{i+1}- {servicio}')
-        rta = self.validar_entero(1,len(lista_de_servicios))
-        return lista_de_servicios[rta-1]
+        servicios_escogidos = []
+        rta = 0
+        while True:
+            print('Seleccione un servicio de la lista:')
+            for servicio in lista_de_servicios:
+                print(f'{servicio.id_servicio}- {servicio}')
+                # print(f'{i+1}- {servicio}')
+            print(f'{len(lista_de_servicios) + 1}- No quiero más servicios')
+            rta = self.validar_entero(1,len(lista_de_servicios)+1)
+            if rta == len(lista_de_servicios) + 1:
+                return servicios_escogidos
+            else:
+                servicios_escogidos.append(lista_de_servicios[rta-1])
 
     def solicitar_senia(self, costo_senia):
         print(f'El monto de la seña para reservar este evento es ${costo_senia}')
@@ -74,7 +82,7 @@ class VistaAgenda:
         print('2- No')
         rta = self.validar_entero(1,2)
         if rta == 1:
-            print('Seña abonada')
+            print('Seña abonada. El evento fue reservado con éxito.')
             return True
         else:
             print('Su evento fue registrado, pero la reserva no será registrada hasta que abone la seña correspondiente')
@@ -86,3 +94,8 @@ class VistaAgenda:
             print(f'Su cancelación fue realizada con anticipación, por lo que se le reintegrarán ${evento.importe_recibido_senia * 0.3}')
         else:
             print('Su cancelación ha sido realizada con una anticipación menor a 15 días, por lo que no corresponde reintegro.')
+    
+    def mostrar_eventos_no_seniados(self, lista_de_eventos):
+        for i, evento in enumerate(lista_de_eventos):
+            if not evento.estado_evento:
+                print(f'{i+1}- {evento}')

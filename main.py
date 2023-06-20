@@ -1,7 +1,6 @@
-#ESTO ESTÁ DE MUESTRA NOMÁS, SE HACE AL ÚLTIMO
 from Views.VistaAgenda import VistaAgenda
 from Controllers.ControladorAgenda import ControladorAgenda
-vista = VistaAgenda()
-controlador = ControladorAgenda(vista)
+vista_main = VistaAgenda()
+controlador_main = ControladorAgenda(vista_main)
 
-controlador.ejecutar()
+controlador_main.ejecutar()

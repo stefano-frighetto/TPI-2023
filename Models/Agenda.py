@@ -18,8 +18,8 @@ class Agenda:
     
     def proponer_fecha(self, fecha_inicial):
         while not self.verificar_fecha(fecha_inicial):
-            fecha_inicial += datetime.timedelta(days = 1)
-        return fecha_inicial
+            fecha_propuesta = fecha_inicial + datetime.timedelta(days = 1)
+        return fecha_propuesta
 
     def reservar_evento_agenda(self, evento):
         self.eventos.append(evento)
