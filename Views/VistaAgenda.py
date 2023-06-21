@@ -21,9 +21,8 @@ class VistaAgenda:
         print('"""""""""""""""""""""""""""""""""""""""""""""""""""""')
         print("1. Realizar una nueva reserva")
         print('2. Abonar seña pendiente')        
-        print('3. Agregar o quitar servicios')
-        print("4. Cancelar una reserva")
-        print("5. Salir")
+        print("3. Cancelar una reserva")
+        print("4. Salir")
     
     def solicitar_fecha(self):
         print('¿Qué fecha desea reservar para su evento')
@@ -90,7 +89,9 @@ class VistaAgenda:
     
     def mostrar_cancelacion(self, evento):
         fecha_actual = datetime.date.today()
-        if evento.fecha_evento - fecha_actual > 15:
+        diferencia = evento.fecha_evento - fecha_actual
+        diferencia_dias = diferencia.days
+        if  diferencia_dias > 15:
             print(f'Su cancelación fue realizada con anticipación, por lo que se le reintegrarán ${evento.importe_recibido_senia * 0.3}')
         else:
             print('Su cancelación ha sido realizada con una anticipación menor a 15 días, por lo que no corresponde reintegro.')
@@ -99,3 +100,14 @@ class VistaAgenda:
         for i, evento in enumerate(lista_de_eventos):
             if not evento.estado_evento:
                 print(f'{i+1}- {evento}')
+    
+    def mostrar_eventos_reservados(self, lista_de_eventos):
+        for i, evento in enumerate(lista_de_eventos):
+            if evento.estado_evento:
+                print(f'{i+1}- {evento}')
+    
+    def mostrar_mensaje_de_exito(self):
+        print('La operación ha sido realizada con éxito')
+    
+    # def devolucion_senia(self,senia):
+    #     print('Como realizó su cancelac')

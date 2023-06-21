@@ -12,7 +12,7 @@ class Agenda:
     
     def verificar_fecha(self, fecha):
         for evento in self.eventos:
-            if fecha == evento.fecha:
+            if fecha == evento.fecha_evento:
                 return False
         return True
     
