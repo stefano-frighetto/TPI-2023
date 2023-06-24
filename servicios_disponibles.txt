@@ -1,0 +1,6 @@
+1,DJ,500
+2,Decoracion,800
+3,Cotillon,300
+4,Maquina de Humo,200
+5,Maquillaje,250
+6,Musica en Vivo,1000

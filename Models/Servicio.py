@@ -7,6 +7,9 @@ class Servicio:
     def __str__(self):
         return f'Servicio: {self.nombre_servicio}\nCosto: ${self.costo_servicio}'
     
+    def get_id_servicio(self):
+        return self.id_servicio
+
     def get_nombre_servicio(self):
         return self.nombre_servicio
     

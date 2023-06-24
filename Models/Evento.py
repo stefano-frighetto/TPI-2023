@@ -1,12 +1,12 @@
 class Evento:
-    def __init__(self, cliente, fecha, servicios_contratados = []):
-        self.fecha_evento = fecha
+    def __init__(self, estado, cliente, fecha, servicios_contratados = []):
+        self.estado_evento = estado        
         self.cliente_evento = cliente
+        self.fecha_evento = fecha
         self.servicios_contratados = servicios_contratados
         self.importe_administrativo = 1000 #Considerando al importe administrativo como un importe fijo
         self.importe_iva = 1.21
-        self.calcular_importes() #servicios, total, seña
-        self.estado_evento = True
+        self.calcular_importes() #Este método en el constructor termina de definir los costos de servicios, total, seña a partir de atributos
     
     def get_estado_evento(self):
         return self.estado_evento
@@ -51,6 +51,7 @@ class Evento:
     def __str__(self):
         return f'{self.fecha_evento.day}/{self.fecha_evento.month}/{self.fecha_evento.year} - {self.cliente_evento}'
 
+    #Método llamado en el constructor
     def calcular_importes(self):
         self.importe_servicios = sum(servicio.costo_servicio for servicio in self.servicios_contratados)
         self.importe_total = (self.importe_administrativo + self.importe_servicios) * self.importe_iva
