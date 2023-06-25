@@ -70,11 +70,14 @@ class ControladorAgenda:
                     self.vista_agenda.mostrar_senia(evento_cliente.get_importe_senia())
                     self.actualizar_archivo()
                 case 2:
-                    self.vista_agenda.mostrar_eventos_reservados(self.agenda.get_eventos())
-                    rta = self.vista_agenda.validar_entero(1,len(self.agenda.get_eventos()))
-                    evento_a_cancelar = self.agenda.get_eventos()[rta-1]
-                    evento_a_cancelar.set_estado_evento(False)
-                    self.vista_agenda.mostrar_cancelacion(evento_a_cancelar)
-                    self.actualizar_archivo()
+                    if len(self.agenda.get_eventos()) > 0:
+                        self.vista_agenda.mostrar_eventos_reservados(self.agenda.get_eventos())
+                        rta = self.vista_agenda.validar_entero(1,len(self.agenda.get_eventos()))
+                        evento_a_cancelar = self.agenda.get_eventos()[rta-1]
+                        evento_a_cancelar.set_estado_evento(False)
+                        self.vista_agenda.mostrar_cancelacion(evento_a_cancelar)
+                        self.actualizar_archivo()
+                    else:
+                        self.vista_agenda.mostrar_sin_eventos()
                 case 3:
                     break

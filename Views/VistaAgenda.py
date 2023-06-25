@@ -1,6 +1,14 @@
 import datetime
 
 class VistaAgenda:
+    def mostrar_menu_principal(self):
+        print('"""""""""""""""""""""""""""""""""""""""""""""""""""""')
+        print("Bienvenido al sistema de reservas de SocialEvent S.A.")
+        print('"""""""""""""""""""""""""""""""""""""""""""""""""""""')
+        print("1. Realizar una nueva reserva")      
+        print("2. Cancelar una reserva")
+        print("3. Salir")
+    
     def validar_entero(self, lim_inf, lim_sup):
         while True:
             try:
@@ -14,14 +22,13 @@ class VistaAgenda:
                     continue
                 else:
                     return choice
-
-    def mostrar_menu_principal(self):
-        print('"""""""""""""""""""""""""""""""""""""""""""""""""""""')
-        print("Bienvenido al sistema de reservas de SocialEvent S.A.")
-        print('"""""""""""""""""""""""""""""""""""""""""""""""""""""')
-        print("1. Realizar una nueva reserva")      
-        print("2. Cancelar una reserva")
-        print("3. Salir")
+    
+    def solicitar_datos_cliente(self):
+        print('Ingrese el nombre del cliente:')
+        nombre = input()
+        print('Ingrese el DNI del cliente')
+        dni = input()
+        return nombre, dni
     
     def solicitar_fecha(self):
         print('¿Qué fecha desea reservar para su evento')
@@ -55,13 +62,6 @@ class VistaAgenda:
             self.mostrar_proponer_fecha(date + datetime.timedelta(days=1))
         else:
             return False
-
-    def solicitar_datos_cliente(self):
-        print('Ingrese el nombre del cliente:')
-        nombre = input()
-        print('Ingrese el DNI del cliente')
-        dni = input()
-        return nombre, dni
     
     def solicitar_servicio(self, lista_de_servicios):
         servicios_escogidos = []
@@ -77,9 +77,14 @@ class VistaAgenda:
                 return servicios_escogidos
             else:
                 servicios_escogidos.append(lista_de_servicios[rta-1])
-
+    
     def mostrar_senia(self, costo_senia):
         print(f'El monto de la seña para reservar este evento es de ${costo_senia}')
+    
+    def mostrar_eventos_reservados(self, lista_de_eventos):
+        for i, evento in enumerate(lista_de_eventos):
+            if evento.estado_evento:
+                print(f'{i+1}- {evento}')
     
     def mostrar_cancelacion(self, evento):
         fecha_actual = datetime.date.today()
@@ -90,7 +95,5 @@ class VistaAgenda:
         else:
             print('Su cancelación ha sido realizada con una anticipación menor a 15 días, por lo que no corresponde reintegro.')
     
-    def mostrar_eventos_reservados(self, lista_de_eventos):
-        for i, evento in enumerate(lista_de_eventos):
-            if evento.estado_evento:
-                print(f'{i+1}- {evento}')
+    def mostrar_sin_eventos(self):
+        print('No hay ningún evento reservado')
