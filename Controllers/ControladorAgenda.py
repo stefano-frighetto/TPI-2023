@@ -68,6 +68,7 @@ class ControladorAgenda:
                     evento_cliente = Evento(True, cliente_evento, fecha_solicitada, servicios_solicitados)
                     self.agenda.reservar_evento_agenda(evento_cliente)
                     self.vista_agenda.mostrar_senia(evento_cliente.get_importe_senia())
+                    self.vista_agenda.mostrar_detalle_evento(evento_cliente)
                     self.actualizar_archivo()
                 case 2:
                     if len(self.agenda.get_eventos()) > 0:

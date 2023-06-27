@@ -97,3 +97,14 @@ class VistaAgenda:
     
     def mostrar_sin_eventos(self):
         print('No hay ningún evento reservado')
+    
+    def mostrar_detalle_evento(self, evento):
+        print('Detalle de la reserva:')
+        print(f'Estado de la reserva: {evento.estado_evento}')
+        print(f'Cliente: {evento.cliente_evento}')
+        print(f'Fecha del evento: {evento.fecha_evento}')
+        print(f'Servicios Contratados:')
+        for servicio in evento.servicios_contratados:
+            print(servicio)
+        print(f'Importe total: ${evento.importe_total}')
+        print(f'Importe seña: ${evento.importe_senia}')
